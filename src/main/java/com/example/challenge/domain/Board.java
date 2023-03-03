@@ -4,10 +4,7 @@ import com.sun.istack.NotNull;
 import lombok.*;
 import lombok.experimental.FieldDefaults;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.util.Date;
 
 @Getter
@@ -28,5 +25,12 @@ public class Board {
     @NotNull
     String content;
 
+    @Column(updatable = false)
+    String writer;
+
+    @Column(insertable = false, updatable = false, columnDefinition = "date default current_date")
+    Date createDate;
+
+    @Column(insertable = false, columnDefinition = "number default 0")
     Long cnt;
 }

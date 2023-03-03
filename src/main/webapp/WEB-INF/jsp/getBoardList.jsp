@@ -46,7 +46,7 @@
             </tr>
         </c:forEach>
     </table>
-    <a href="insertBoard">새글 등록</a>
+    <a href="insertBoardView">새글 등록</a>
 </div>
 </body>
 </html>
