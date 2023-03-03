@@ -5,6 +5,7 @@ import lombok.*;
 import lombok.experimental.FieldDefaults;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Getter
 @Setter
@@ -13,24 +14,21 @@ import javax.persistence.*;
 @AllArgsConstructor
 @NoArgsConstructor
 @FieldDefaults(level = AccessLevel.PRIVATE)
-public class Board extends BaseEntity {
+@Table(name = "users")
+public class User extends BaseEntity{
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     Long id;
 
-    @ManyToOne
-    @JoinColumn(name = "user_id")
-    User user;
+    @NotNull
+    String email;
 
     @NotNull
-    String title;
+    String password;
 
-    @NotNull
-    String content;
+    String nickname;
 
-    @Column(updatable = false)
-    String writer;
-
-    @Column(insertable = false, columnDefinition = "number default 0")
-    Long cnt;
+    @OneToMany(mappedBy = "user", fetch = FetchType.LAZY)
+    List<Board> boards;
 }

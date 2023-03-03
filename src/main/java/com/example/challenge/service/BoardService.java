@@ -25,7 +25,7 @@ public class BoardService {
     public Board getBoard(Board board) {
 
         Board findBoard = boardRepository.findById(board.getId()).get();
-        findBoard.setCnt(findBoard.getCnt()+1);
+        findBoard.setCnt(findBoard.getCnt() + 1);
         boardRepository.save(findBoard);
 
         return findBoard;
